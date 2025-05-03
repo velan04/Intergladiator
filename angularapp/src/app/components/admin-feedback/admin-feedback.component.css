@@ -1,0 +1,81 @@
+/* Admin feedback container */
+.admin-feedback-container {
+    max-width: 800px;
+    margin: 60px auto 30px;
+    padding: 30px;
+    background-color: #fff8f2;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(92, 61, 46, 0.15);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Title */
+  .admin-title {
+    text-align: center;
+    font-size: 26px;
+    color: #5c3d2e;
+    margin-bottom: 25px;
+  }
+  
+  /* Empty message */
+  .admin-empty-message {
+    text-align: center;
+    font-size: 15px;
+    color: #8b5e3c;
+    background-color: #fef4ec;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  /* Feedback card */
+  .admin-feedback-card {
+    background-color: #fffdfb;
+    border: 1px solid #e0cfc2;
+    padding: 18px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(92, 61, 46, 0.08);
+  }
+  
+  /* Header: username and date */
+  .admin-feedback-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #6b4b3e;
+  }
+  
+  /* User info */
+  .admin-user-name {
+    font-weight: 600;
+    color: #5c3d2e;
+    margin-right: 10px;
+  }
+  
+  /* Date */
+  .admin-feedback-date {
+    font-style: italic;
+    color: #a1887f;
+  }
+  
+  /* Feedback text */
+  .admin-feedback-text {
+    font-size: 15.5px;
+    color: #4e342e;
+    line-height: 1.6;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .admin-feedback-header {
+      flex-direction: column;
+      gap: 4px;
+    }
+  
+    .admin-feedback-text {
+      font-size: 14.5px;
+    }
+  }
+  

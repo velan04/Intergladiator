@@ -1,0 +1,35 @@
+<div class="add-feedback-wrapper">
+    <h2 class="page-title">Add Feedback</h2>
+  
+    <form [formGroup]="addFeedbackForm" (ngSubmit)="onSubmit()" [ngClass]="{ blur: successPopup }">
+      <div class="form-group">
+        <div class="validation">
+          <label for="feedbackText">Feedback <span class="asterisk">*</span></label>
+        </div>
+        <textarea
+          id="feedbackText"
+          formControlName="feedbackText"
+          rows="5"
+          placeholder="Write your feedback..."
+          class="form-textarea"
+        ></textarea>
+  
+        <!-- Validation error -->
+        <div *ngIf="addFeedbackForm.get('feedbackText')?.invalid && (addFeedbackForm.get('feedbackText')?.touched || submitted)" 
+             class="validation-error">
+          *Feedback is required
+        </div>
+      </div>
+  
+      <div class="add-btn">
+        <button type="submit" [disabled]="addFeedbackForm.invalid">Submit</button>
+      </div>
+    </form>
+  
+    <!-- Success popup -->
+    <div *ngIf="successPopup" class="success-popup">
+      <p>Feedback submitted successfully!</p>
+      <button (click)="handleSuccessMessage()">OK</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,96 @@
+<div class="register-container">
+  <h2>Register</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    
+    <!-- Username -->
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" formControlName="username" />
+      <div *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.hasError('required')" class="error">
+        Username is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="email" formControlName="email" />
+      <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')" class="error">
+        Email is required.
+      </div>
+      <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')" class="error">
+        Enter a valid email address.
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" formControlName="password" />
+      <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')" class="error">
+        Password is required.
+      </div>
+      <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('weakPassword')" class="error">
+        Password must have uppercase, lowercase, number, and special character.
+      </div>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <label>Confirm Password:</label>
+      <input type="password" formControlName="confirmPassword" />
+      <div *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.hasError('required')" class="error">
+        Confirm Password is required.
+      </div>
+      <div *ngIf="registerForm.errors?.passwordMismatch && registerForm.get('confirmPassword')?.touched" class="error">
+        Passwords do not match.
+      </div>
+    </div>
+
+    <!-- Mobile Number -->
+    <div class="form-group">
+      <label>Mobile Number:</label>
+      <input type="text" formControlName="mobileNumber" />
+      <div *ngIf="registerForm.get('mobileNumber')?.touched && registerForm.get('mobileNumber')?.hasError('required')" class="error">
+        Mobile number is required.
+      </div>
+      <div *ngIf="registerForm.get('mobileNumber')?.touched && registerForm.get('mobileNumber')?.hasError('pattern')" class="error">
+        Mobile number must be exactly 10 digits.
+      </div>
+    </div>
+
+    <!-- User Role -->
+    <div class="form-group">
+      <label>User Role:</label>
+      <select formControlName="userRole">
+        <option value="" disabled>Select a role</option>
+        <option value="User">User</option>
+        <option value="Admin">Admin</option>
+      </select>
+      <div *ngIf="registerForm.get('userRole')?.touched && registerForm.get('userRole')?.hasError('required')" class="error">
+        User role is required.
+      </div>
+    </div>
+
+    <!-- Secret Key (Admin Only) -->
+    <div class="form-group" *ngIf="registerForm.get('userRole')?.value === 'Admin'">
+      <label>Secret Key:</label>
+      <input type="password" formControlName="secretKey" />
+      <div *ngIf="registerForm.get('secretKey')?.touched && registerForm.get('secretKey')?.hasError('required')" class="error">
+        Secret key is required.
+      </div>
+      <div *ngIf="registerForm.get('secretKey')?.touched && registerForm.get('secretKey')?.hasError('secretKeyMismatch')" class="error">
+        Secret key does not match.
+      </div>
+    </div>
+
+    <!-- Success and Error messages -->
+    <div class="message-container">
+      <div *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="success-msg">{{ successMessage }}</div>
+    </div>
+    <!-- Submit -->
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+</div>

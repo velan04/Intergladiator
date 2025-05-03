@@ -1,0 +1,30 @@
+<nav>
+  <ul class="nav-links">
+    <ng-container *ngIf="isLoggedIn">
+      <!-- All Events Page -->
+      <li *ngIf="isUser">
+        <a routerLink="/brownies" routerLinkActive="active">Brownies</a>
+      </li>
+
+      <!-- Registered Events -->
+      <li *ngIf="isUser">
+        <a routerLink="/orders" routerLinkActive="active">My Orders</a>
+      </li>
+
+      <!-- Feedback Section Dropdown -->
+      <li class="dropdown" *ngIf="isUser">
+        <a class="dropbtn" routerLinkActive="active">Feeback</a>
+        <ul class="sub-menu">
+          <li><a routerLink="/add-feedback" routerLinkActive="active">Add Feedback</a></li>
+          <li><a routerLink="/feedbacks" routerLinkActive="active">My Feedbacks</a></li>
+        </ul>
+      </li>
+    </ng-container>
+
+    <!-- Login/Register -->
+    <ng-container *ngIf="!isLoggedIn">
+      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+    </ng-container>
+  </ul>
+</nav>

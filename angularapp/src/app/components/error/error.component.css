@@ -1,0 +1,18 @@
+
+
+.error-container {
+    text-align: center;
+    margin-top: 50px; /* Adjust margin as needed */
+  }
+  
+  .htag {
+    font-size: 2em; /* Adjust font size */
+    color: #FF0000; /* Adjust color if needed */
+    /* Add other styles for the header */
+  }
+  
+  .ptag {
+    font-size: 1.2em; /* Adjust font size */
+    /* Add other styles for the paragraph */
+  }
+  

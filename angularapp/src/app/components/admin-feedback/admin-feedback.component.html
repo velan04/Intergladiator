@@ -1,0 +1,16 @@
+<div class="admin-feedback-container">
+  <h2 class="admin-title">All User Feedback</h2>
+
+  <div *ngIf="feedbacks.length === 0" class="admin-empty-message">
+    No feedback available.
+  </div>
+
+  <div *ngFor="let fb of feedbacks" class="admin-feedback-card">
+    <div class="admin-feedback-header">
+      <span class="admin-user-name"><strong>Name:</strong> {{ fb.user.username }}</span>
+      <span class="admin-user-name"><strong>Email:</strong> {{ fb.user.email }}</span>
+      <span class="admin-feedback-date"><strong>Date:</strong> {{ fb.date | date:'longDate' }}</span>
+    </div>
+    <p class="admin-feedback-text">{{ fb.feedbackText }}</p>
+  </div>
+</div>

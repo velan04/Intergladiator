@@ -1,0 +1,36 @@
+<div class="orders-container">
+    <div class="orders-content">
+      <h2 class="orders-title">My Orders</h2>
+  
+      <div *ngIf="orders.length === 0" class="no-orders">
+        <p>No orders found.</p>
+      </div>
+  
+      <div *ngFor="let order of orders" class="order-card">
+        <div class="order-header">
+          <div>
+            <p class="order-id">Order ID: <span>{{ order.id }}</span></p>
+            <p class="order-date">Date: {{ order.orderDate | date }}</p>
+          </div>
+          <div class="order-status-box">
+            <span class="status">{{ order.status }}</span>
+          </div>
+        </div>
+  
+        <div class="order-items">
+          <div *ngFor="let item of order.orderItems" class="order-item">
+            <div class="item-details">
+              <p class="item-name">{{ item.brownie.name }}</p>
+              <p class="item-description">{{ item.brownie.description }}</p>
+              <p class="item-qty">Qty: {{ item.quantity }}</p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="order-footer">
+          <p class="order-total">Total Amount: ₹{{ order.totalAmount }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

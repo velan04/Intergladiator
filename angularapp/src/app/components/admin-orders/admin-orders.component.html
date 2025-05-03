@@ -1,0 +1,49 @@
+<div class="orders-container">
+    <div class="orders-content">
+      <h2 class="orders-title">Manage Orders</h2>
+  
+      <div *ngIf="orders.length === 0" class="no-orders">
+        <p>No orders found.</p>
+      </div>
+  
+      <div *ngFor="let order of orders" class="order-card">
+        <div class="order-header">
+          <div>
+            <div class="order-id">Order ID: <span>{{ order.id }}</span></div>
+            <div class="order-date">Date: {{ order.orderDate | date }}</div>
+          </div>
+          <div class="order-status-box">
+            <label for="status-{{ order.id }}" class="mr-2">Status:</label>
+            <select [id]="'status-' + order.id"
+                    [value]="order.status"
+                    (change)="updateStatus(order, $event.target.value)">
+              <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="user-info" *ngIf="order.user">
+            <p><strong>User:</strong> {{ order.user.username }}</p>
+            <p><strong>Email:</strong> {{ order.user.email }}</p>
+            <p><strong>Phone:</strong> {{ order.user.mobileNumber }}</p>
+        </div>          
+  
+        <div class="order-items">
+          <div *ngFor="let item of order.orderItems" class="order-item">
+            <div class="item-name">{{ item.brownie.name }}</div>
+            <div class="item-description">{{ item.brownie.description }}</div>
+            <div class="item-qty">Qty: {{ item.quantity }}</div>
+          </div>
+        </div>
+  
+        <div class="order-footer">
+          <div class="order-total">Total: ₹{{ order.totalAmount }}</div>
+        </div>
+      </div>
+  
+      <div *ngIf="message" class="update-message" [ngClass]="messageType">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+  

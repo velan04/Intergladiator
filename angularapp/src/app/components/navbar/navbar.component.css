@@ -1,0 +1,144 @@
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F9F5F0; /* Latte Beige */
+  color: #3B2F2F; /* Dark Cocoa */
+  line-height: 1.6;
+}
+
+/* Navbar Styles */
+nav {
+  background-color: #F9F5F0; /* Light latte */
+  color: #5C4033; /* Rich Brown */
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-bottom: 2px solid #D6A760; /* Caramel Gold underline */
+}
+
+.site-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #5C4033;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center; /* Center vertically */
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center; /* Center inside each li */
+}
+
+
+.nav-links a {
+  color: #5C4033;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 8px 18px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  background-color: #FDE9C9; /* Soft glow on hover */
+  color: #3B2F2F; /* Darker text on hover */
+  box-shadow: 0 2px 8px rgba(214, 167, 96, 0.5);
+}
+
+/* Logout Button */
+.button-logout {
+  background-color: #D6A760; /* Caramel Gold */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-logout:hover {
+  background-color: #C18F4F; /* Darker caramel on hover */
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(214, 167, 96, 0.6);
+}
+
+/* Logout Popup Overlay */
+.logout-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(60, 40, 30, 0.4); /* translucent dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Popup Content Box */
+.logout-popup-content {
+  background-color: #FFF8F0; /* creamy beige */
+  padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  border: 2px solid #D6A760; /* Caramel Gold border */
+}
+
+.logout-popup-content p {
+  font-size: 1.2rem;
+  color: #3B2F2F; /* Cocoa */
+  margin-bottom: 24px;
+}
+
+/* Confirmation Buttons */
+.button-yes, .button-cancel {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 0 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.button-yes {
+  background-color: #D6A760; /* Caramel */
+  color: white;
+}
+
+.button-yes:hover {
+  background-color: #C18F4F;
+  transform: scale(1.05);
+}
+
+.button-cancel {
+  background-color: #E6D5BD; /* soft neutral */
+  color: #5C4033;
+}
+
+.button-cancel:hover {
+  background-color: #D4C2A6;
+  transform: scale(1.05);
+}

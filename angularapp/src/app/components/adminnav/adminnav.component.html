@@ -1,0 +1,23 @@
+<nav>
+  <ul class="nav-links">
+    <ng-container *ngIf="isLoggedIn">
+      <!-- Admin Brownie Dropdown -->
+      <li class="dropdown" *ngIf="isAdmin">
+        <a class="dropbtn" routerLinkActive="active">Brownies</a>
+        <ul class="sub-menu">
+          <li><a routerLink="/admin/add/brownie" routerLinkActive="active">Add Brownie</a></li>
+          <li><a routerLink="/admin/brownies" routerLinkActive="active">Manage Brownies</a></li>
+        </ul>
+      </li>
+
+      <!-- Other Admin Links (optional future) -->
+      <li *ngIf="isAdmin">
+        <a routerLink="/admin/orders" routerLinkActive="active">Orders</a>
+      </li>
+
+      <li *ngIf="isAdmin">
+        <a routerLink="/admin-feedback" routerLinkActive="active">Reviews</a>
+      </li>
+    </ng-container>
+  </ul>
+</nav>

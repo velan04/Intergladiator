@@ -1,0 +1,125 @@
+/* Navbar Container */
+nav {
+  background-color: #f9eddd; /* Light latte background */
+  color: #5C4033; /* Rich brown text */
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); */
+}
+
+/* Site Title */
+.site-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5C4033;
+  margin: 0;
+}
+
+/* Nav Links */
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  margin: 0;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* List Item */
+.nav-links li {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Nav Link */
+.nav-links a {
+  text-decoration: none;
+  color: #5C4033;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: #FDE9C9; /* Soft caramel hover */
+  color: #3B2F2F; /* Slightly darker cocoa */
+}
+
+/* Dropdown */
+.dropdown .dropbtn {
+  background-color: transparent;
+  color: #5C4033;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #FDE9C9; /* Soft caramel hover on dropdown */
+  border-radius: 8px;
+}
+
+/* Sub Menu */
+.sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff9f0; /* Soft warm white */
+  border-radius: 8px;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+}
+
+.dropdown:hover .sub-menu {
+  display: block;
+}
+
+/* Sub Menu Items */
+.sub-menu li {
+  padding: 8px 16px;
+}
+
+.sub-menu a {
+  color: #5C4033;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.sub-menu a:hover {
+  background-color: #f0e0c0; /* Light creamy hover */
+  border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .site-title {
+    margin-bottom: 15px;
+  }
+}

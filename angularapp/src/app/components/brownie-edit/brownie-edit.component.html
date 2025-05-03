@@ -1,0 +1,88 @@
+<div class="edit-brownie-container">
+  <h2>Edit Brownie</h2>
+
+  <form (ngSubmit)="onSubmit()" #brownieForm="ngForm">
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">Name*</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="brownie.name"
+        name="name"
+        required
+        minlength="3"
+        #name="ngModel"
+      />
+      <div *ngIf="name.invalid && name.touched" class="error">
+        <small *ngIf="name.errors?.required">Name is required.</small>
+        <small *ngIf="name.errors?.minlength">Name must be at least 3 characters long.</small>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description*</label>
+      <textarea
+        id="description"
+        [(ngModel)]="brownie.description"
+        name="description"
+        required
+        minlength="10"
+        #description="ngModel"
+        rows="4"
+      ></textarea>
+      <div *ngIf="description.invalid && description.touched" class="error">
+        <small *ngIf="description.errors?.required">Description is required.</small>
+        <small *ngIf="description.errors?.minlength">Description must be at least 10 characters long.</small>
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="form-group">
+      <label for="price">Price (₹)*</label>
+      <input
+        type="number"
+        id="price"
+        [(ngModel)]="brownie.price"
+        name="price"
+        required
+        min="1"
+        #price="ngModel"
+      />
+      <div *ngIf="price.invalid && price.touched" class="error">
+        <small *ngIf="price.errors?.required">Price is required.</small>
+        <small *ngIf="price.errors?.min">Price must be greater than 0.</small>
+      </div>
+    </div>
+
+    <!-- In Stock -->
+    <div class="form-group-checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="brownie.stockCount" name="inStock" />
+        In Stock
+      </label>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="form-group">
+      <label for="imageFile">Upload Image</label>
+      <input type="file" id="imageFile" (change)="onFileSelected($event)" />
+    </div>
+
+    <!-- Preview -->
+    <div *ngIf="brownie.imageUrl" class="image-preview">
+      <img [src]="brownie.imageUrl" alt="Brownie Preview" />
+    </div>
+
+    <!-- Messages -->
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <!-- Buttons -->
+    <div class="button-actions">
+      <button type="submit" class="btn-primary" [disabled]="brownieForm.invalid">Update Brownie</button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

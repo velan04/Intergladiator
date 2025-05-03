@@ -1,0 +1,58 @@
+<div class="brownie-list-container">
+    <div class="header">
+      <h2>Our Brownies</h2>
+      <div class="toolbar">
+        <input
+          type="text"
+          placeholder="Search brownies..."
+          [(ngModel)]="searchTerm"
+          class="search-input"
+        />
+  
+        <select [(ngModel)]="sortOption" class="sort-select">
+          <option value="name">Sort by Name</option>
+          <option value="priceLowHigh">Price: Low to High</option>
+          <option value="priceHighLow">Price: High to Low</option>
+          <option value="stockLowHigh">Stock: Low to High</option>
+          <option value="stockHighLow">Stock: High to Low</option>
+        </select>
+      </div>
+    </div>
+  
+    <div *ngIf="loading" class="loading-message">
+        Loading brownies...
+    </div>
+
+    <div *ngIf="!loading && brownies.length === 0 " class="empty-message">
+      Sorry, No brownies are found.
+    </div>
+  
+    <div class="brownie-grid" *ngIf="brownies.length > 0">
+      <div class="brownie-card" *ngFor="let brownie of filteredAndSortedBrownies">
+        <img [src]="brownie.imageUrl || '/assets/placeholder.jpg'" alt="Brownie Image" />
+  
+        <div class="brownie-info">
+          <h3>{{ brownie.name }}</h3>
+          <p class="description">{{ brownie.description }}</p>
+  
+          <div class="brownie-footer">
+            <span class="stock" [class.out-of-stock]="brownie.stockCount === 0">
+                {{ brownie.stockCount === 0 ? 'Out of Stock' : 'Only ' + brownie.stockCount + ' left' }}
+              </span>
+              
+            <span class="price">₹{{ brownie.price }}</span>
+          </div>
+        </div>
+  
+        <div class="button-group">
+          <button class="btn-order"
+            [disabled]="brownie.stockCount === 0"
+            (click)="addToOrder(brownie)">
+            {{ brownie.stockCount === 0 ? 'Out of Stock' : 'Order Now' }}
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,41 @@
+<div class="order-form">
+  <h2>Confirm Your Order</h2>
+
+  <div *ngIf="orderItems.length > 0; else empty">
+    <div *ngFor="let item of orderItems; let i = index" class="order-item">
+      <div class="item-details">
+        <div class="item-name">
+          <strong>{{ item.name }}</strong>
+        </div>
+    
+        <div class="item-info">
+          <span>Price: ₹{{ item.price }}</span> |
+          <span>Quantity:
+            <button (click)="decreaseQuantity(i)" class="qty-btn" [disabled]="item.quantity <= 1">−</button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <button (click)="increaseQuantity(i)" class="qty-btn" [disabled]="item.quantity >= item.stockCount">+</button>
+          </span> |
+          <span>Total: ₹{{ item.price * item.quantity }}</span> |
+          <span class="stock-info">(In stock: {{ item.stockCount }})</span>
+          <!-- <button (click)="removeItem(i)" class="remove-btn"> Remove</button> -->
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <p class="total"><strong>Total Amount:</strong> ₹{{ totalAmount }}</p>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+
+    <div class="button-group">
+      <button (click)="submitOrder()" class="btn-primary">Place Order</button>
+      <button (click)="cancelOrder()" class="btn-secondary">Cancel</button>
+    </div>
+  </div>
+
+  <ng-template #empty>
+    <p>No items in your order. Browse our <a routerLink="/brownies">brownie list</a> to add some!</p>
+  </ng-template>
+</div>

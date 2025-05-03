@@ -1,0 +1,42 @@
+<nav>
+  <h1 class="site-title">Brownie Bliss</h1>
+  <ul class="nav-links">
+    <ng-container *ngIf="!isLoggedIn">
+      <li><a routerLink="/register">Register</a></li>
+      <li><a routerLink="/login">Login</a></li>
+    </ng-container>
+
+    <ng-container *ngIf="isLoggedIn">
+      <li><p class="user-role">{{ userRole }}/{{ userName  }}</p></li>
+      <li><a routerLink="/">Home</a></li>
+
+      <!-- Admin Navigation -->
+      <li *ngIf="isAdmin">
+        <app-adminnav></app-adminnav>
+      </li>
+
+      <!-- User Navigation -->
+      <li *ngIf="isUser">
+        <app-usernav></app-usernav>
+      </li>
+
+      <!-- Logout Button -->
+      <li>
+        <button class="button button-logout" (click)="showLogoutPopup = true">
+          Logout
+        </button>
+      </li>
+    </ng-container>
+  </ul>
+</nav>
+
+<!-- Logout Confirmation Popup -->
+<div *ngIf="showLogoutPopup" class="logout-popup">
+  <div class="logout-popup-content">
+    <p>Are you sure you want to logout?</p>
+    <button (click)="logout(); showLogoutPopup = false" id="logout-btn" class="button button-yes">
+      Yes, Logout
+    </button>
+    <button (click)="showLogoutPopup = false" class="button button-cancel">Cancel</button>
+  </div>
+</div>

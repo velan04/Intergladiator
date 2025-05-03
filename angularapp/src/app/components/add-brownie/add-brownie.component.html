@@ -1,0 +1,58 @@
+<div class="form-container">
+    <h2>Add New Brownie</h2>
+    <form (ngSubmit)="onSubmit()" #brownieForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name*</label>
+        <input type="text" id="name" [(ngModel)]="brownie.name" name="name" required minlength="3" #name="ngModel" />
+        <div *ngIf="name.invalid && name.touched" class="error">
+          <small *ngIf="name.errors?.required">Name is required.</small>
+          <small *ngIf="name.errors?.minlength">Name must be at least 3 characters long.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description*</label>
+        <textarea id="description" [(ngModel)]="brownie.description" name="description" required minlength="10" #description="ngModel"></textarea>
+        <div *ngIf="description.invalid && description.touched" class="error">
+          <small *ngIf="description.errors?.required">Description is required.</small>
+          <small *ngIf="description.errors?.minlength">Description must be at least 10 characters long.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="price">Price (₹)*</label>
+        <input type="number" id="price" [(ngModel)]="brownie.price" name="price" required min="1" #price="ngModel" />
+        <div *ngIf="price.invalid && price.touched" class="error">
+          <small *ngIf="price.errors?.required">Price is required.</small>
+          <small *ngIf="price.errors?.min">Price must be greater than 0.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="imageFile">Upload Image</label>
+        <input type="file" id="imageFile" (change)="onFileSelected($event)" />
+      </div>
+  
+      <div *ngIf="brownie.imageUrl" class="image-preview">
+        <img [src]="brownie.imageUrl" alt="Brownie Preview" />
+      </div>
+  
+      <label for="stockCount">Stock Count*</label>
+      <input type="number" id="stockCount" [(ngModel)]="brownie.stockCount" name="stockCount" required min="0" #stockCount="ngModel" />
+      <div *ngIf="stockCount.invalid && stockCount.touched" class="error">
+        <small *ngIf="stockCount.errors?.required">Stock count is required.</small>
+        <small *ngIf="stockCount.errors?.min">Stock count cannot be negative.</small>
+      </div>
+
+      <!-- Success Message -->
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+      <!-- Error Message -->
+     <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+      <div class="btn-con">
+      <button type="submit" class="btn-primary">Add Brownie</button>
+    </div>
+    </form>
+  </div>
+  
